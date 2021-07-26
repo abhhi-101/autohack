@@ -36,20 +36,21 @@ curl -i -s -k -X $'POST'     -H $'Host: www.kitterman.com' -H $'User-Agent: Mozi
 
 #Grabbing Screenshots
 cd ~/projects/$domain/scans/; cat ~/projects/$domain/domains/unique_domains.txt | aquatone
-#Zone Scanner
-path="~/projects/$domain"
-file="$path/domains/unique_domains.txt"
-save="$path/domains"
 
+#Zone Scanner
+path=~
+file="$path/projects/$domain/domains/unique_domains.txt"
 for host in $(cat $file);do
-        echo -e "* Scanning host : " $host >> $save/host.txt
-        echo ""  >> $save/host.txt
-        host $host | tee >> $save/host.txt
-        echo "" >> $save/host.txt
+        echo -e "* Scanning host : " $host >> ~/projects/$domain/scans/host.txt
+        echo ""  >> ~/projects/$domain/scans/host.txt
+        host $host | tee >> ~/projects/$domain/scans/host.txt
+        echo "" >> ~/projects/$domain/scans/host.txt
 done
-grep "SERVFAIL" $save/host.txt | tee >> $save/zone.txt
-grep "NXDOMAIN" $save/host.txt | tee >> $save/zone.txt
-}
+grep "SERVFAIL" ~/projects/$domain/scans/host.txt | tee >> ~/projects/$domain/scans/zone.txt
+grep "NXDOMAIN" ~/projects/$domain/scans/host.txt | tee >> ~/projects/$domain/scans/zone.txt
+
+#Dorking Githb
+p
 
 #Dorking Githb
 python3 ~/tools/GitDorker/GitDorker.py  -t <USE_YOUR_GITHUB_DEVELOPER_TOKEN_HERE> -e 30 -d ~/tools/GitDorker/Dorks/alldorksv3 -q $domain -o ~/projects/$domain/vulnerabilities/github.dork
