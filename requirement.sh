@@ -19,3 +19,7 @@ git clone https://github.com/projectdiscovery/nuclei-templates.git
 cd ~/tools/; echo "Installing Aquatone.."
 wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
 unzip aquatone_linux_amd64_1.7.0.zip; sudo cp aquatone /bin/
+
+
+cd ~/tools/; echo "Installing GitDorker..."
+git clone https://github.com/obheda12/GitDorker.git; cd GitDorker; pip install requirements.txt
