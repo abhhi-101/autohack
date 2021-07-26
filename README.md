@@ -1,8 +1,8 @@
- kruti's own tools 😉
+ kruti's own tools 👩‍💻
  --------------------
- made wih ❤️ by abhhi
+ Made wih ❤️ by abhhi 
  for
- My Dear Kruti ❤️
+ My Dear Kruti 😉
  
 ### How to install
 1. ``git clone https://github.com/abhhi-101/kruti.git``
