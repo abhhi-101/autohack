@@ -11,7 +11,7 @@ sudo apt install subjack
 mkdir -p ~/tools/;cd ~/tools/
 echo "Installing nuclie..."
 git clone https://github.com/projectdiscovery/nuclei.git
-cd nuclei/v2/cmd/nuclei; sudo go build main.go; mv main.go nuclei; sudo cp nuclei /bin/
+cd nuclei/v2/cmd/nuclei; sudo go build main.go; mv main nuclei; sudo cp nuclei /bin/
 
 cd ~/tools/
 git clone https://github.com/projectdiscovery/nuclei-templates.git
