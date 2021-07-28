@@ -41,5 +41,5 @@ curl -i -s -k -X $'POST'     -H $'Host: www.kitterman.com' -H $'User-Agent: Mozi
 #cd ~/projects/$seed/$domain/scans/; cat ~/projects/$seed/$domain/domains/unique_domains.txt | aquatone
 
 #Dorking Githb
-#python3 ~/tools/GitDorker/GitDorker.py         -t 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 -e 30 -d ~/tools/GitDorker/Dorks/alldorksv3 -q $domain -o ~/projects/$domain/vulnerabilities/github.dork
+#python3 ~/tools/GitDorker/GitDorker.py -t <YOUR_TOKEN_HERE>  -e 30 -d ~/tools/GitDorker/Dorks/alldorksv3 -q $domain -o ~/projects/$domain/vulnerabilities/github.dork
 done
