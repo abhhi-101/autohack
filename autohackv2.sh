@@ -3,8 +3,8 @@
 function banner {
 echo "==========================="
 echo "Made with <3 & love by abhhi"
-echo "    for     "
-echo "My Dear Kruti :)"
+echo "    to     "
+echo "hack the planet to secure!!! :)"
 echo "==========================="
 echo " "
 }
