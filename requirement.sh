@@ -22,3 +22,6 @@ unzip aquatone_linux_amd64_1.7.0.zip; sudo cp aquatone /bin/
 
 cd ~/tools/; echo "Installing GitDorker..."
 git clone https://github.com/obheda12/GitDorker.git; cd GitDorker; python3 -m pip install requirements.txt
+
+cp hackkeen.sh /sbin
+cp aws-hackkeen.sh /sbin
