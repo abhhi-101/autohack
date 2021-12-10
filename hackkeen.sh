@@ -28,6 +28,25 @@ function seed {
 	done
 }
 
+function aws-hackkeen {
+bucket=$1
+
+echo "[+] Testing by abhhi" > test.txt
+
+echo "[+] Testing for " $bucket
+aws s3api get-bucket-acl --bucket my-bucket --no-sign-request
+aws s3 ls s3://$bucket --no-sign-request
+aws s3 mv test.txt s3://$bucket --no-sign-request
+aws s3 cp test.txt s3://$bucket --no-sign-request
+aws s3 rm s3://$bucket --no-sign-request
+
+rm test.txt
+
+echo " "
+echo "----------------"
+
+}
+
 #Scanning individual HOST's:
 function subdomains {
 	mkdir -p ~/projects/$seed/$domain/domains
@@ -67,13 +86,16 @@ echo "[+] Checking for spf-records..."
 
 echo "[+] Scanning with Nuclei..."
 	nuclei -ut
-	nuclei -t ~/nuclei-templates/ -silent -l ~/projects/$seed/$domain/domains/probed.txt -o ~/projects/$seed/$domain/vulnerabilities/nuclei
+	nuclei -t ~/nuclei-templates/ -silent -l ~/projects/$seed/$domain/domains/probed.txt -o ~/projects/$seed/$domain/vulnerabilities/nuclei -H X-Testing-By:abhhi@hackerone.com
 
 echo "[+] Checking for S3 buckets..."
-        for s3 in $(cat ~/projects/$seed/$domain/vulnerabilities/nuclei | grep -i s3-detect | awk -F  '/' '{print $3}'); do aws-hackkeen.sh $s3 | tee ~/projects/$seed/$domain/vulnerabilities/s3; done
+for s3 in $(cat ~/projects/$seed/$domain/vulnerabilities/nuclei | grep -i s3-detect | awk -F  '/' '{print $3}'); do aws-hackkeen $s3 | tee ~/projects/$seed/$domain/vulnerabilities/s3; done
+for s3 in $(cat ~/projects/$seed/$domain/vulnerabilities/nuclei | grep -i aws-listing | awk -F ' ' '{print $7}' | awk -F '[' '{print $2}' | awk -F ']' '{print $1}'); do aws-hackkeen  $s3 | tee ~/projects/$seed/$domain/vulnerabilities/s3; done
+
+
 
 echo "[+] Scanning with ChopChop..."
-        chopchop scan -u ~/projects/$seed/$domain/domains/probed.txt -c ~/tools/ChopChop/chopchop.yml --insecure --export-filename ~/projects/$seed/$domain/vulnerability/chopchop | grep -iv>
+        chopchop scan -u ~/projects/$seed/$domain/domains/probed.txt -c ~/tools/ChopChop/chopchop.yml --insecure --export-filename ~/projects/$seed/$domain/vulnerability/chopchop | grep -iv 403
 
 echo "[+] Checking with Jira-Lens..."
         cd ~/tools/Jira-Lens/Jira-Lens/;
