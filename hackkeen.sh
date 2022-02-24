@@ -28,25 +28,6 @@ function seed {
 	done
 }
 
-function aws-hackkeen {
-bucket=$1
-
-echo "[+] Testing by abhhi" > test.txt
-
-echo "[+] Testing for " $bucket
-aws s3api get-bucket-acl --bucket my-bucket --no-sign-request
-aws s3 ls s3://$bucket --no-sign-request
-aws s3 mv test.txt s3://$bucket --no-sign-request
-aws s3 cp test.txt s3://$bucket --no-sign-request
-aws s3 rm s3://$bucket --no-sign-request
-
-rm test.txt
-
-echo " "
-echo "----------------"
-
-}
-
 #Scanning individual HOST's:
 function subdomains {
 	mkdir -p ~/projects/$seed/$domain/domains
@@ -99,11 +80,11 @@ echo "[+] Scanning with ChopChop..."
 
 echo "[+] Checking with Jira-Lens..."
         cd ~/tools/Jira-Lens/Jira-Lens/;
-        python3 ~/tools/Jira-Lens/Jira-Lens/Jira-Lens.py -f /home/kali/projects/$domain/domains/probed.txt -o $domain
+        python3 ~/tools/Jira-Lens/Jira-Lens/Jira-Lens.py -f ~/projects/$domain/domains/probed.txt -o $domain
         cd
 
 echo "[+] Scanning with Jaeles..."
-	jaeles scan -s /home/kali/tools/jaeles-signatures/ -U /home/kali/projects/$domain/domains/probed.txt -c 50 -o ~/projects/$seed/$domain/vulnerabilities/jaeles
+	jaeles scan -s ~/tools/jaeles-signatures/ -U ~/projects/$domain/domains/probed.txt -c 50 -o ~/projects/$seed/$domain/vulnerabilities/jaeles
 
 echo "[+] Grabbing info using Shodan..."
 #	shodan domain $domain > tee ~/projects/$seed/$domain/scans/shodan
