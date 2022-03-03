@@ -67,7 +67,7 @@ echo "[+] Checking for spf-records..."
 
 echo "[+] Scanning with Nuclei..."
 	nuclei --update-template
-	nuclei -t ~/tools/nuclei-templates/ -silent -l ~/projects/$seed/$domain/domains/probed.txt -o ~/projects/$seed/$domain/vulnerabilities/nuclei -H X-Testing-By:abhhi@hackerone.com
+	nuclei -t ~/tools/nuclei-templates/ -silent -l ~/projects/$seed/$domain/domains/probed.txt -o ~/projects/$seed/$domain/vulnerabilities/nuclei -H X-Testing-By:user@hackerone.com
 
 echo "[+] Checking for S3 buckets..."
 for s3 in $(cat ~/projects/$seed/$domain/vulnerabilities/nuclei | grep -i s3-detect | awk -F  '/' '{print $3}'); do aws-hackkeen $s3 | tee ~/projects/$seed/$domain/vulnerabilities/s3; done
