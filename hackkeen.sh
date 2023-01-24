@@ -66,8 +66,8 @@ echo "[+] Checking for spf-records..."
 	curl -i -s -k -X $'POST'     -H $'Host: www.kitterman.com' -H $'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0' -H $'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H $'Accept-Language: en-US,en;q=0.5' -H $'Accept-Encoding: gzip, deflate' -H $'Content-Type: application/x-www-form-urlencoded' -H $'Content-Length: 31' -H $'Origin: https://www.kitterman.com' -H $'Connection: close' -H $'Referer: https://www.kitterman.com/spf/validate.html' -H $'Upgrade-Insecure-Requests: 1'     --data-binary $'serial=fred12&domain='$domain     $'https://www.kitterman.com/spf/getspf3.py' | grep 'No valid SPF record found' >/dev/null && echo -e "\e[1;32m [+] No SPF Found at: \e[0m"$domain | tee ~/projects/$seed/$domain/vulnerabilities/spf_record.txt || echo -e '\e[1;31m [-] Found at: \e[0m'$domain | tee ~/projects/$seed/$domain/vulnerabilities/spf_record.txt
 
 echo "[+] Scanning with Nuclei..."
-	nuclei --update-template
-	nuclei -t ~/tools/nuclei-templates/ -silent -l ~/projects/$seed/$domain/domains/probed.txt -o ~/projects/$seed/$domain/vulnerabilities/nuclei -H X-Testing-By:user@hackerone.com
+	nuclei --update-templates
+	nuclei -t ~/nuclei-templates/ -silent -l ~/projects/$seed/$domain/domains/probed.txt -o ~/projects/$seed/$domain/vulnerabilities/nuclei -H X-Testing-By:user@hackerone.com
 
 echo "[+] Checking for S3 buckets..."
 for s3 in $(cat ~/projects/$seed/$domain/vulnerabilities/nuclei | grep -i s3-detect | awk -F  '/' '{print $3}'); do aws-hackkeen $s3 | tee ~/projects/$seed/$domain/vulnerabilities/s3; done
@@ -84,6 +84,7 @@ echo "[+] Checking with Jira-Lens..."
         cd
 
 echo "[+] Scanning with Jaeles..."
+	jaeles config init
 	jaeles scan -s ~/tools/jaeles-signatures/ -U ~/projects/$domain/domains/probed.txt -c 50 -o ~/projects/$seed/$domain/vulnerabilities/jaeles
 
 echo "[+] Grabbing info using Shodan..."
