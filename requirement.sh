@@ -10,6 +10,7 @@ sudo apt install amass -y
 sudo apt install httprobe -y
 sudo apt install subjack -y
 sudo apt install assetfinder -y
+sudo apt install chromium -y
 
 path=$(pwd)
 mkdir -p $path/tools/
