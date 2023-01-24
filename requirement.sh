@@ -26,7 +26,7 @@ git clone https://github.com/bp0lr/gauplus.git
 cd gauplus
 go build main.go
 mv main gau
-sudo cp gau /sbinls
+sudo cp gau /sbin
 
 echo "Installing ChopChop"
 cd $path/tools/
