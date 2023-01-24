@@ -6,8 +6,8 @@
  hack the planet to secure!!! 😉
  
 ### How to install
-1. Install Git Command 
-``sudo apt-get install git``
+1. Install Git & Unzip Command 
+``sudo apt-get install git -y && sudo apt-get install unzip -y ``
 2. Clone the AutoHack repository 
 ``git clone https://github.com/abhhi-101/autohack.git``
 3. Goto AutoHack directory
