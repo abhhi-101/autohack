@@ -4,12 +4,12 @@ sudo cp nuk.sh /sbin
 sudo cp hackkeen.sh /sbin
 
 #installing tools	
-sudo apt install subfinder
-sudo apt install sublist3r
-sudo apt install amass
-sudo apt install httprobe
-sudo apt install subjack
-sudo apt install assetfinder
+sudo apt install subfinder -y
+sudo apt install sublist3r -y
+sudo apt install amass -y
+sudo apt install httprobe -y
+sudo apt install subjack -y
+sudo apt install assetfinder -y
 
 path=$(pwd)
 mkdir -p $path/tools/
