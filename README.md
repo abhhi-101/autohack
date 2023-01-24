@@ -6,9 +6,14 @@
  hack the planet to secure!!! 😉
  
 ### How to install
-1. ``git clone https://github.com/abhhi-101/autohack.git``
-1. ``cd autohack``
-1. run ``bash requirements.sh``
+1. Install Git Command 
+``sudo apt-get install git``
+2. Clone the AutoHack repository 
+``git clone https://github.com/abhhi-101/autohack.git``
+3. Goto AutoHack directory
+``cd autohack``
+4. Install all the Requirements
+run ``bash requirements.sh``
 
 ### How to Use
 1. ``cd autohack``
