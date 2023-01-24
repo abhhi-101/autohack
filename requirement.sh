@@ -49,7 +49,6 @@ mv main jaeles
 sudo cp jaeles /sbin
 
 cd $path/tools/; echo "Installing Aquatone.."
-wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
-unzip aquatone_linux_amd64_1.7.0.zip; sudo cp aquatone /bin/
+wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip && unzip aquatone_linux_amd64_1.7.0.zip; sudo cp aquatone /bin/
 
 echo "[+] Done - - Happy Hacking!!!"
