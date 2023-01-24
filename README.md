@@ -7,12 +7,16 @@
  
 ### How to install
 1. Install Git & Unzip Command 
-``sudo apt-get install git -y && sudo apt-get install unzip -y ``
+
+``sudo apt-get install git -y && sudo apt-get install unzip -y && sudo apt-get install golang -y``
 2. Clone the AutoHack repository 
+
 ``git clone https://github.com/abhhi-101/autohack.git``
 3. Goto AutoHack directory
+
 ``cd autohack``
 4. Install all the Requirements
+
 run ``bash requirements.sh``
 
 ### How to Use
