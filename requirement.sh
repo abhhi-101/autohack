@@ -4,6 +4,7 @@ sudo cp nuk.sh /sbin
 sudo cp hackkeen.sh /sbin
 
 #installing tools	
+sudo apt-get install update --fix-missing -y
 sudo apt install subfinder -y
 sudo apt install sublist3r -y
 sudo apt install amass -y
